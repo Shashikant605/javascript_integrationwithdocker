@@ -1,0 +1,38 @@
+<head>
+   <title>Docker Web Terminal</title>
+<style>
+body {
+	background: url(docker.jpg)no-repeat;
+	background-size: cover;
+	height: 50%;
+		
+}
+</style></head>
+<body>
+<center>
+<h1 style="color:green">Docker Live CMD</h1>
+	
+    <div id="repeat" class="loop">
+
+    <input id="command" type="text" placeholder="Enter Docker Command">
+    <button onclick="Run_command()" class="btn"> Enter </button>
+    </div> <br> <br>
+<pre><div id="output" style="color:white">Output</div>
+</pre>
+</center>
+
+
+<script>
+function Run_command(){
+var input = document.getElementById("command").value
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://192.168.1.49/cgi-bin/task7.py?x=" + input,true);
+xhr.send();
+xhr.onload = function(){
+         var output =xhr.responseText;
+         document.getElementById("output").innerHTML =output;
+}
+}
+</script>
+</body>
